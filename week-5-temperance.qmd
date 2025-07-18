@@ -99,3 +99,42 @@ predictions(fit_call, type = "prob")
 9740?
 
 What does 0.9448 mean? In detail!
+
+
+```{r}
+plot_predictions(fit_call, 
+                 type = "prob", 
+                 by = c("quality", 
+                        "ethnicity", 
+                        "city"))
+```
+
+```{r}
+plot_predictions(fit_call, 
+                 type = "prob", 
+                 by = c("quality", 
+                        "ethnicity", 
+                        "city"),
+                        draw = FALSE)
+```
+
+
+```{r}
+plot_predictions(fit_call, 
+                 type = "prob", 
+                 by = c("quality", 
+                        "ethnicity", 
+                        "city"),
+                        draw = FALSE) |> 
+    filter(group == "yes") |> 
+    ggplot(aes(x = interaction(ethnicity, city), y = estimate, color = quality)) +
+  geom_point(position = position_dodge(width = 0.4)) +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), 
+                width = 0.2, 
+                position = position_dodge(width = 0.4)) +
+  labs(x = "Ethnicity and City", 
+       y = "Predicted Probability of Callback (Yes)", 
+       color = "Quality") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
