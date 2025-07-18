@@ -78,3 +78,24 @@ How can you use the **marginaleffects** package to answer them?
 Start writing summary paragraph. (AI may be helpful for individual sentences but won't give you a paragraph at once.)
 
 Start playing with marginaleffects package. Run predictions(). What does the output mean? AI can help.
+
+
+### Summary Paragraph
+
+Using data from a resume experiment which was run in Chicago and Boston around the year 2000, I seek to understand the determinants of employment in Baltimore in 2000. 
+
+Or
+
+Using data from a resume experiment which was run in Chicago and Boston around the year 2000, I seek to understand the causal effect of African-American- versus White-sounding names on receiving interviews. 
+
+I estimate a logistic model in which the dependent variable indicates whether or not a specific resume received a callback from the employer to which the resume was submitted. 
+
+Insert sentence about a concern about one of the assumptions.
+
+```{r}
+predictions(fit_call, type = "prob")
+```
+
+9740?
+
+What does 0.9448 mean? In detail!
